@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BASE */
+@layer base {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    scroll-behavior: smooth;
+  }
+
+  /* ONLY lock scroll on homepage */
+  body.homepage {
+    overflow: hidden;
+  }
+}
+
+/* =============== SUPER HARD MASTER SCROLL =============== */
+
+/* Scroll container (the only scrollable area) */
+.snap-container {
+  height: calc(100vh - 64px); /* exact height under navbar (h-16 = 64px) */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.snap-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each section locked full screen */
+.snap-section {
+  scroll-snap-align: start;
+  height: calc(100vh - 64px); /* ALWAYS full height */
+  min-height: calc(100vh - 64px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* Optional: remove padding inside section content */
+.section-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ========================================= */
+
+/* Buttons & cards */
+@layer components {
+  .btn-primary {
+    @apply inline-block px-5 py-2 rounded-lg font-semibold bg-brand-500 text-white hover:bg-brand-700 transition;
+  }
+  .btn-secondary {
+    @apply inline-block px-4 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-sm overflow-hidden;
+  }
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .snap-container {
+    height: auto;
+    scroll-snap-type: none;
+    overflow-y: auto;
+  }
+  .snap-section {
+    height: auto;
+    min-height: auto;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes slideLeftFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-left {
+  opacity: 0;
+  animation: slideLeftFade 0.9s ease-out forwards;
+}
+
+@keyframes staggerFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-child {
+  opacity: 0;
+}
+
+.stagger-animate {
+  animation: staggerFadeUp 0.7s ease-out forwards;
+}
