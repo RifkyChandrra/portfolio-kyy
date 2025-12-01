@@ -10,12 +10,14 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ name, email, message }),
       });
+
       if (res.ok) {
         setStatus("sent");
         setName("");
@@ -24,7 +26,7 @@ export default function ContactForm() {
       } else {
         setStatus("error");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
     }
   }
@@ -42,8 +44,9 @@ export default function ContactForm() {
         <button type="submit" className="btn-primary">
           {status === "sending" ? "Mengirim..." : "Kirim Pesan"}
         </button>
-        {status === "sent" && <span className="text-green-600">Terkirim!</span>}
-        {status === "error" && <span className="text-red-600">Gagal mengirim.</span>}
+
+        {status === "sent" && <span className="text-green-600">Pesan terkirim ✔</span>}
+        {status === "error" && <span className="text-red-600">Gagal mengirim ✖</span>}
       </div>
     </form>
   );

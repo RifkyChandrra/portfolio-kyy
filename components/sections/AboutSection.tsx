@@ -20,7 +20,7 @@ export default function AboutSection() {
       </div>
 
       <div className="flex-1 flex justify-center">
-        <Image src="/images/profile1.jpg" width={400} height={350} alt="About" className="stagger-child rounded-3xl grayscale hover:grayscale-0 transition duration-500 object-cover shadow-lg" />
+        <Image src="/images/profile11.jpg" width={450} height={350} alt="Profile" className="stagger-child rounded-3xl grayscale hover:grayscale-0 transition duration-500 object-cover shadow-lg" />
       </div>
     </div>
   );
