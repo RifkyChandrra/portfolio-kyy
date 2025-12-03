@@ -20,7 +20,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-7 py-12">
-      <header className="mb-8">
+      <header className="mb-6">
         <h1 className="text-3xl font-bold">Projects — Video Gallery</h1>
         <p className="text-gray-600 mt-2">Tutorial & demo yang berkaitan dengan IT Support. Klik thumbnail untuk menonton.</p>
       </header>

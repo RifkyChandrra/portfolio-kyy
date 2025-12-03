@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import type { ReactNode } from "react";
 import BodyClassController from "@/components/BodyClassController";
 
@@ -12,13 +11,17 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="id">
-      {/* Controller ini berjalan di client untuk memberi class pada body */}
       <BodyClassController />
 
       <body className="bg-gray-50 text-gray-800 antialiased">
+        {/* Navbar tetap di atas */}
         <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+
+        {/* INI PERUBAHANNYA: snap-container langsung di dalam body */}
+        <div className="snap-container">{children}</div>
+
+        {/* Footer (aktifkan jika ingin ditampilkan di akhir halaman) */}
+        {/* <Footer /> */}
       </body>
     </html>
   );
