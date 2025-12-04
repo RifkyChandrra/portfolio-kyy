@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   BASE
+========================= */
 @layer base {
   html,
   body {
@@ -10,12 +13,12 @@
     padding: 0;
     background-color: #f8f9fa;
     scroll-behavior: smooth;
-    overflow: hidden;
+    overflow: hidden; /* Desktop scroll locked */
   }
 }
 
 /* =========================
-   SCROLL PER SECTION
+   DESKTOP SNAP SCROLL
 ========================= */
 
 .snap-container {
@@ -24,6 +27,8 @@
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
+
+  /* hide scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -35,11 +40,12 @@
 .snap-section {
   scroll-snap-align: start;
   height: 100vh;
-  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 0;
+
+  padding: 48px 0; /* Desktop spacing */
 }
 
 .section-inner {
@@ -55,32 +61,71 @@
   .btn-primary {
     @apply inline-block px-5 py-2 rounded-lg font-semibold bg-brand-500 text-white hover:bg-brand-700 transition;
   }
+
   .btn-secondary {
-    @apply inline-block px-4 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition;
+    @apply inline-block px-4 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-100 transition;
   }
+
   .card {
-    @apply bg-white rounded-xl shadow-sm overflow-hidden;
+    @apply bg-white rounded-2xl shadow-md overflow-hidden;
   }
 }
 
 /* =========================
-   MOBILE FIX
+   MOBILE OPTIMIZATION
 ========================= */
 
 @media (max-width: 768px) {
+  /* Allow normal scroll */
   html,
   body {
-    overflow: auto !important; /* HP kembali bisa scroll */
-  }
-  .snap-container {
-    height: auto;
-    overflow-y: auto;
-    scroll-snap-type: none;
+    overflow: auto !important;
   }
 
+  /* Disable snap */
+  .snap-container {
+    height: auto;
+    scroll-snap-type: none;
+    overflow-y: auto;
+  }
+
+  /* Better spacing for mobile */
   .snap-section {
     height: auto;
     min-height: auto;
+    padding: 24px 0 !important;
+  }
+
+  .section-inner {
+    padding: 0 1.25rem !important;
+  }
+
+  /* Headings more proportional */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Button UI better for mobile */
+  .btn-primary,
+  .btn-secondary {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Reduce image spacing */
+  img,
+  .image-wrapper {
+    margin-top: 1rem !important;
   }
 }
 
@@ -134,7 +179,143 @@
 .stagger-child {
   opacity: 0;
 }
-
 .stagger-animate {
   animation: staggerFadeUp 0.7s ease-out forwards;
+}
+
+/* =========================
+   RESPONSIVE BASE FONT
+========================= */
+
+:root {
+  --fs-base: clamp(14px, 2vw, 16px);
+  --fs-lg: clamp(18px, 3.5vw, 20px);
+  --fs-xl: clamp(20px, 4.5vw, 24px);
+}
+
+html {
+  font-size: var(--fs-base);
+}
+
+/* Reduce animation only if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* MOBILE HEADING OVER IMAGE */
+@media (max-width: 768px) {
+  .mobile-heading-overlay {
+    position: relative;
+    margin-top: -2.2rem; /* naik ke area gambar */
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+  }
+
+  .mobile-divider {
+    width: 60px;
+    height: 4px;
+    border-radius: 10px;
+    background: #2b3640;
+    margin: 0.5rem auto 1rem auto;
+  }
+}
+/* Heading overlay mobile */
+.mobile-overlay-title {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f172a;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  z-index: 30; /* sangat penting supaya muncul di atas gambar */
+}
+
+/* Mobile divider aesthetic */
+/* divider */
+.mobile-divider {
+  width: 64px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.85);
+  margin: 14px auto;
+}
+
+/* ensure image containers don't hide overlays */
+.section-image-wrap {
+  position: relative; /* overlay absolute relative to this */
+  display: inline-block;
+}
+
+/* responsive image sizes (mobile smaller, desktop larger) */
+.resp-img {
+  width: 240px;
+  height: auto;
+}
+@media (min-width: 640px) {
+  .resp-img {
+    width: 280px;
+  }
+}
+@media (min-width: 768px) {
+  .resp-img {
+    width: 420px;
+  }
+}
+
+/* mobile spacing polish */
+@media (max-width: 768px) {
+  .section-inner {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .snap-section {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    min-width: 180px;
+  }
+  .section-text {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+  }
+}
+
+/* small polish: make sure overlay text isn't hidden on dark images */
+.mobile-overlay-title,
+.mobile-overlay-title * {
+  pointer-events: none;
+}
+
+/* Heading mengambang di bawah gambar */
+.float-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: left;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  color: #0f172a;
+}
+
+@media (min-width: 768px) {
+  .float-heading {
+    font-size: 2.2rem;
+    max-width: none;
+    margin-left: 0;
+  }
 }

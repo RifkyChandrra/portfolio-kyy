@@ -7,42 +7,34 @@ import { Instagram, Linkedin, Github, Mail } from "lucide-react";
 
 export default function ContactSection() {
   const staggerRef = useStagger();
+
   return (
-    <section id="contact" className="w-full py-20 bg-gray-50">
-      <div ref={staggerRef} className="section-inner container max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center justify-center">
-        {/* LEFT TEXT */}
-        <div className="flex-1">
-          <h2 className="stagger-child text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <p className="stagger-child text-gray-600 max-w-md mb-8">Hubungi saya jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
+    <section id="contact" className="w-full py-14 bg-gray-50">
+      <div ref={staggerRef} className="section-inner container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-10">
+        {/* IMAGE */}
+        <div className="flex-1 flex flex-col items-center section-image-wrap">
+          <Image src="/images/profile4.jpg" alt="Contact Image" width={420} height={350} className="stagger-child rounded-3xl shadow-lg object-cover grayscale hover:grayscale-0 transition duration-500 resp-img" />
 
-          {/* CONTACT BUTTON */}
-          <Link href="/contact">
-            <button className="stagger-child px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition">Contact Page</button>
-          </Link>
-
-          {/* SOCIAL ICONS */}
-          <div className="stagger-child flex items-center gap-6 mt-8">
-            <Link href="https://instagram.com/rifkychandrra" target="_blank" className="group">
-              <Instagram size={28} className="text-gray-600 group-hover:text-pink-500 transition" />
-            </Link>
-
-            <Link href="https://linkedin.com/in/rifkychandrra" target="_blank" className="group">
-              <Linkedin size={28} className="text-gray-600 group-hover:text-blue-600 transition" />
-            </Link>
-
-            <Link href="https://github.com/rifkychandrra" target="_blank" className="group">
-              <Github size={28} className="text-gray-600 group-hover:text-black transition" />
-            </Link>
-
-            <Link href="mailto:rifky9635@gmail.com" className="group">
-              <Mail size={28} className="text-gray-600 group-hover:text-red-500 transition" />
-            </Link>
-          </div>
+          {/* FLOAT HEADING */}
+          <h2 className="float-heading stagger-child md:hidden">Get In Touch</h2>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="flex-1 flex justify-center">
-          <Image src="/images/profile4.jpg" width={550} height={450} alt="Projects" className="stagger-child rounded-3xl grayscale hover:grayscale-0 transition duration-500 object-cover shadow-lg" />
+        {/* TEXT */}
+        <div className="flex-1 section-text md:text-left">
+          <h2 className="hidden md:block text-4xl font-bold">Get In Touch</h2>
+
+          <p className="stagger-child text-gray-600 mt-4 max-w-md leading-relaxed mx-auto md:mx-0">Hubungi saya jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
+
+          <Link href="/contact">
+            <button className="stagger-child btn-primary my-6">Contact Page</button>
+          </Link>
+
+          <div className="stagger-child flex items-center justify-center md:justify-start gap-6">
+            <Instagram size={28} className="text-gray-600" />
+            <Linkedin size={28} className="text-gray-600" />
+            <Github size={28} className="text-gray-600" />
+            <Mail size={28} className="text-gray-600" />
+          </div>
         </div>
       </div>
     </section>

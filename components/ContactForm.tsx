@@ -32,22 +32,76 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input className="p-3 border rounded" placeholder="Nama" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input className="p-3 border rounded" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </div>
+    <div className="w-full flex justify-center mt-8">
+      <form
+        onSubmit={handleSubmit}
+        className="
+          w-full max-w-xl 
+          bg-white p-8 rounded-2xl shadow-lg 
+          border border-gray-200
+        "
+      >
+        {/* Title */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">Kirim Pesan</h2>
+        <p className="text-gray-500 text-center mb-6 text-sm">Hubungi saya untuk project, kerja sama, atau pertanyaan apa pun.</p>
 
-      <textarea className="w-full mt-4 p-3 border rounded" rows={6} placeholder="Pesan" value={message} onChange={(e) => setMessage(e.target.value)} required />
+        {/* Input Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            className="
+              p-3 rounded-xl border border-gray-300 
+              focus:ring-2 focus:ring-blue-400 focus:outline-none
+            "
+            placeholder="Nama"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-      <div className="flex items-center gap-4 mt-4">
-        <button type="submit" className="btn-primary">
-          {status === "sending" ? "Mengirim..." : "Kirim Pesan"}
-        </button>
+          <input
+            type="email"
+            className="
+              p-3 rounded-xl border border-gray-300 
+              focus:ring-2 focus:ring-blue-400 focus:outline-none
+            "
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-        {status === "sent" && <span className="text-green-600">Pesan terkirim ✔</span>}
-        {status === "error" && <span className="text-red-600">Gagal mengirim ✖</span>}
-      </div>
-    </form>
+        {/* Message */}
+        <textarea
+          className="
+            w-full mt-4 p-3 rounded-xl border border-gray-300 
+            focus:ring-2 focus:ring-blue-400 focus:outline-none
+          "
+          rows={6}
+          placeholder="Pesan"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+
+        {/* Submit Row */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+          <button
+            type="submit"
+            className="
+              px-6 py-3 rounded-xl text-white font-semibold
+              bg-blue-600 hover:bg-blue-700 
+              transition shadow-md w-full sm:w-auto
+            "
+          >
+            {status === "sending" ? "Mengirim..." : "Kirim Pesan"}
+          </button>
+
+          {status === "sent" && <span className="text-green-600 font-medium">✔ Pesan berhasil dikirim</span>}
+
+          {status === "error" && <span className="text-red-600 font-medium">✖ Gagal mengirim pesan</span>}
+        </div>
+      </form>
+    </div>
   );
 }
