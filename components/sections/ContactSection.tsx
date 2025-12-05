@@ -30,10 +30,21 @@ export default function ContactSection() {
           </Link>
 
           <div className="stagger-child flex items-center justify-center md:justify-start gap-6">
-            <Instagram size={28} className="text-gray-600" />
-            <Linkedin size={28} className="text-gray-600" />
-            <Github size={28} className="text-gray-600" />
-            <Mail size={28} className="text-gray-600" />
+            <Link href="https://instagram.com/rifkychandrra" target="_blank">
+              <Instagram size={28} className="text-gray-600 cursor-pointer hover:text-blue-600 transition" />
+            </Link>
+
+            <Link href="https://linkedin.com/in/rifkychandrra" target="_blank">
+              <Linkedin size={28} className="text-gray-600 cursor-pointer hover:text-blue-600 transition" />
+            </Link>
+
+            <Link href="https://github.com/rifkychandrra" target="_blank">
+              <Github size={28} className="text-gray-600 cursor-pointer hover:text-blue-600 transition" />
+            </Link>
+
+            <a href="mailto:rifky9635@gmail.com">
+              <Mail size={28} className="text-gray-600 cursor-pointer hover:text-blue-600 transition" />
+            </a>
           </div>
         </div>
       </div>
