@@ -25,7 +25,7 @@ export default function HeroSection() {
         <p className="stagger-child text-gray-600 mt-6 max-w-md mx-auto md:mx-0 leading-relaxed">Saya seorang IT Support dengan pengalaman troubleshooting PC, instalasi jaringan, Mikrotik, maintenance, dan dokumentasi teknis.</p>
 
         <div className="stagger-child mt-8 flex gap-4 justify-center md:justify-start">
-          <a href="/images/cv2.pdf" className="btn-secondary">
+          <a href="/images/Cv2.pdf" className="btn-secondary">
             Download CV
           </a>
           <Link href="/contact">
