@@ -29,7 +29,7 @@ export default function AboutDetail() {
           <section className="stagger-child flex flex-col md:flex-row items-center md:items-start gap-10">
             {/* ================= PHOTO EXPAND ON HOVER ================= */}
             <div className="w-full md:w-1/2 flex gap-4">
-              {["/images/poto1.jpg", "/images/poto2.jpg", "/images/poto3.jpg"].map((src, i) => (
+              {["/images/foto2.webp", "/images/foto1.webp", "/images/foto3.webp"].map((src, i) => (
                 <div
                   key={i}
                   onMouseEnter={() => setHovered(i)}
