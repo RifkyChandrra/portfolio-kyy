@@ -68,8 +68,8 @@ export default function AboutDetail() {
                 </Link>
 
                 <div className="inline-flex items-center gap-3 px-3 py-2 bg-white border rounded-full shadow-sm">
-                  <span className="w-3 h-3 rounded-full bg-gray-400 animate-pulse" />
-                  <span className="text-sm text-gray-700">Currently Offline</span>
+                  <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-sm text-gray-700">Online</span>
                 </div>
               </div>
             </div>
@@ -181,7 +181,10 @@ export default function AboutDetail() {
 
                 <ul className="list-disc ml-6 space-y-3 text-gray-700">
                   <li>
-                    <span className="font-semibold">Web Developer</span> — Walikota Jakarta Selatan
+                    <span className="font-semibold">Web Developer</span> — Walikota Jakarta Selatan (Intern)
+                  </li>
+                  <li>
+                    <span className="font-semibold">ICT Infrastructure</span> — Maybank Finance Indonesia
                   </li>
                   {/* <li>
                     <span className="font-semibold">Freelance service PC</span> & instalasi jaringan (2021–sekarang)

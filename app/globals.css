@@ -13,7 +13,8 @@
     padding: 0;
     background-color: #f8f9fa;
     scroll-behavior: smooth;
-    overflow: hidden; /* Desktop scroll locked */
+    scroll-padding-top: 64px;
+    /* overflow: hidden; Desktop scroll locked */
   }
 }
 
@@ -39,13 +40,15 @@
 
 .snap-section {
   scroll-snap-align: start;
-  height: 100vh;
+  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 48px 0; /* Desktop spacing */
+  scroll-margin-top: 64px;
 }
 
 .section-inner {
